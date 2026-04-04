@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+with cts as(
+select sales_id
+From Orders o
+left join Company c 
+on c.com_id =o.com_id
+where c.name LIKE 'RED')
+select name 
+from SalesPerson 
+WHERE sales_id  NOT IN (select DISTINCT sales_id FROM cts)
